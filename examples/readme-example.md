@@ -16,6 +16,7 @@ The project solves lots of problems:
 * [Sub-section](#sub-section)
   * [deeper-level](#deeper-level)
 * [up-again](#up-again)
+* [deprecated-function](#deprecated-function)
 
 ## say-hello
 
@@ -86,4 +87,10 @@ This is nested
 ## up-again
 
 Back up again
+
+## deprecated-function
+
+**DEPRECATED** Because it's old
+
+A deprecated function
 

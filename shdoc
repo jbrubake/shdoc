@@ -534,6 +534,14 @@ function render_docblock(func_name, description, docblock, nesting) {
       lines[0] = render(nesting_top, func_name)
     }
 
+    if (deprecated) {
+        debug("→ DEPRECATED")
+
+        deprecatedText = "**DEPRECATED**"
+        push(lines, deprecatedText " " deprecated)
+        push(lines, "")
+    }
+
     if (description != "") {
         push(lines, description)
         # Add empty line to signal end of description.
@@ -724,7 +732,7 @@ function debug(msg) {
 }
 
 in_description {
-    if (/^[^[[:space:]]*#]|^[[:space:]]*# @[^d]|^[[:space:]]*[^#]|^[[:space:]]*$/) {
+    if (/^[^[[:space:]]*#]|^[[:space:]]*# @[a-z]+|^[[:space:]]*[^#]|^[[:space:]]*$/ && !match($0, /@description/)) {
         debug("→ → in_description: leave")
 
         in_description = 0
@@ -883,6 +891,15 @@ in_example {
     sub(/[[:space:]]*# @see /, "")
 
     docblock_push("see", $0)
+
+    next
+}
+
+/^[[:space:]]*# @deprecated/ {
+    debug("→ @deprecated")
+    sub(/[[:space:]]*# @deprecated /, "")
+
+    deprecated = $0
 
     next
 }

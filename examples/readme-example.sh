@@ -55,3 +55,7 @@ deeper-level() { echo; }
 
 # @description Back up again
 up-again() { echo; }
+
+# @description A deprecated function
+# @deprecated Because it's old
+deprecated-function() { echo; }
