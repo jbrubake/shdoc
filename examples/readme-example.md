@@ -21,6 +21,7 @@ The project solves lots of problems:
 * [Sub-section](#sub-section)
   * [deeper-level](#deeper-level)
 * [up-again](#up-again)
+* [deprecated-function](#deprecated-function)
 
 ## say-hello
 
@@ -62,16 +63,16 @@ echo "test: $(say-hello World)"
 * Output 'Oups !' on error.
   It did it again.
 
-### See also
-
-* [validate()](#validate)
-* [shdoc](https://github.com/reconquest/shdoc).
-
 ### Requires
 
 * Some very specific requirements
   that continue on the next line (indent by a
   single space to continue)
+
+### See also
+
+* [validate()](#validate)
+* [shdoc](https://github.com/reconquest/shdoc).
 
 ## Sub-section
 
@@ -97,4 +98,10 @@ This is nested
 ## up-again
 
 Back up again
+
+## deprecated-function
+
+**DEPRECATED** Because it's old
+
+A deprecated function
 
