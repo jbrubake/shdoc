@@ -654,6 +654,11 @@ function render_docblock(func_name, description, docblock, nesting) {
         push(lines, "")
     }
 
+    if (docblock_allows("requires") && "requires" in docblock) {
+        render_docblock_list(docblock, "requires", "Requires", nesting_one)
+    }
+
+
     result = join(lines)
     return result
 }
@@ -912,9 +917,9 @@ multiple_line_docblock_name {
     }
 }
 
-# Process similarly @stdin, @stdout and @stderr entries.
+# Process similarly @stdin, @stdout, @stderr and @requires entries.
 # Allow for multiple lines entries.
-match($0, /^([[:blank:]]*#[[:blank:]]+)@(stdin|stdout|stderr)[[:blank:]]+(.*[^[:blank:]])[[:blank:]]*$/, contents) {
+match($0, /^([[:blank:]]*#[[:blank:]]+)@(stdin|stdout|stderr|requires)[[:blank:]]+(.*[^[:blank:]])[[:blank:]]*$/, contents) {
     # Fetch matched values.
     indentation = contents[1]
     docblock_name = contents[2]
@@ -980,6 +985,7 @@ match($0, /^([[:blank:]]*#[[:blank:]]+)@(stdin|stdout|stderr)[[:blank:]]+(.*[^[:
         docblock_filter["example"] = 1
         docblock_filter["see"] = 1
         docblock_filter["set"] = 1
+        docblock_filter["requires"] = 1
         file_annoblock = render_docblock("", "", docblock, 1)
         delete docblock_filter
     }

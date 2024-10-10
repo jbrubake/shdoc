@@ -48,6 +48,8 @@ _Output_: [examples/readme-example.md](examples/readme-example.md)<br/><br/>
 #      * b
 #      * c
 #      * etc
+# @requires foo
+# @requires bar
 
 # @description My super function.
 # Not thread-safe.
@@ -55,6 +57,9 @@ _Output_: [examples/readme-example.md](examples/readme-example.md)<br/><br/>
 # @example
 #    echo "test: $(say-hello World)"
 #
+# @requires Some very specific requirements
+#  that continue on the next line (indent by a
+#  single space to continue)
 #
 # @option -h | --help Display help.
 # @option -v<value> | --value=<value> Set a value.
@@ -68,6 +73,9 @@ _Output_: [examples/readme-example.md](examples/readme-example.md)<br/><br/>
 #
 # @exitcode 0 If successful.
 # @exitcode 1 If an empty string passed.
+#
+# @requires foo
+# @requires bar
 #
 # @see validate()
 # @see [shdoc](https://github.com/reconquest/shdoc).
@@ -395,6 +403,28 @@ Can be specified multiple times to describe all possible exitcodes and their con
 # @description Says 'hello world'.
 # @exitcode 0 If successful.
 # @exitcode 1 If world is gone.
+say-hello-world() {
+    ...
+}
+```
+### `@requires`
+
+Indicates requirements needed by the file or the given function
+
+**Example**
+
+```bash
+# @name My script
+# @requires foo
+# @requires A long description of the requirements
+#  (indent by one space to continue)
+```
+
+**Example**
+
+```bash
+# @requires ubuntu>20
+# @requires curl(1)
 say-hello-world() {
     ...
 }
