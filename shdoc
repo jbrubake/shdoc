@@ -835,7 +835,7 @@ match($0, /^([[:blank:]]*#[[:blank:]]+)@(stdin|stdout|stderr)[[:blank:]]+(.*[^[:
 # - `function function_name () {`
 # - `function_name () {`
 # - `function_name {`
-/^[[:blank:]]*(function[[:blank:]]+)?([a-zA-Z0-9_\-:-\\.]+)[[:blank:]]*(\([[:blank:]]*\))?[[:blank:]]*\{/ \
+/^[[:blank:]]*(function[[:blank:]]+)?([a-zA-Z0-9_\-:-\\.]+)[[:blank:]]*(\([[:blank:]]*\))?[[:blank:]]*[({]/ \
 {
     process_function($0)
 }
@@ -850,7 +850,7 @@ match($0, /^([[:blank:]]*#[[:blank:]]+)@(stdin|stdout|stderr)[[:blank:]]+(.*[^[:
 }
 
 # Handle lone opening bracket if previous line is a function declaration.
-/^[[:blank:]]*\{/ \
+/^[[:blank:]]*[({]/ \
     && function_declaration != "" {
     debug("→ multi-line function declaration.")
     # Process function declaration.
