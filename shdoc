@@ -733,11 +733,12 @@ function debug(msg) {
 
     handle_description()
 
+    sub(/@description/, "")
     reset()
 }
 
 in_description {
-    if (/^[^[[:space:]]*#]|^[[:space:]]*# @[a-z]+|^[[:space:]]*[^#]|^[[:space:]]*$/ && !match($0, /@description/)) {
+    if (/^[^[[:space:]]*#]|^[[:space:]]*# @[a-z]+|^[[:space:]]*[^#]|^[[:space:]]*$/) {
         debug("→ → in_description: leave")
 
         in_description = 0
@@ -749,7 +750,6 @@ in_description {
         description = concat(description, $0)
         next
     } else {
-        sub(/^[[:space:]]*# @description[[:space:]]*/, "")
         sub(/^[[:space:]]*#[[:space:]]*/, "")
         sub(/^[[:space:]]*#$/, "")
         debug("→ → in_description: concat [" $0 "]")
