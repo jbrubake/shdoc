@@ -7,6 +7,8 @@
 #      * b
 #      * c
 #      * etc
+# @requires foo
+# @requires bar
 
 # @description My super function.
 # Not thread-safe.
@@ -14,6 +16,9 @@
 # @example
 #    echo "test: $(say-hello World)"
 #
+# @requires Some very specific requirements
+#  that continue on the next line (indent by a
+#  single space to continue)
 #
 # @option -h | --help Display help.
 # @option -v<value> | --value=<value> Set a value.

@@ -10,6 +10,11 @@ The project solves lots of problems:
 * c
 * etc
 
+## Requires
+
+* foo
+* bar
+
 ## Index
 
 * [say-hello](#say-hello)
@@ -61,6 +66,12 @@ echo "test: $(say-hello World)"
 
 * [validate()](#validate)
 * [shdoc](https://github.com/reconquest/shdoc).
+
+### Requires
+
+* Some very specific requirements
+  that continue on the next line (indent by a
+  single space to continue)
 
 ## Sub-section
 
