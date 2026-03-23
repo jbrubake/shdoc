@@ -643,6 +643,10 @@ function render_docblock(func_name, description, docblock, nesting) {
         render_docblock_list(docblock, "stderr", "Output on stderr", nesting_one)
     }
 
+    if (docblock_allows("requires") && "requires" in docblock) {
+        render_docblock_list(docblock, "requires", "Requires", nesting_one)
+    }
+
     if (docblock_allows("see") && "see" in docblock) {
         push(lines, render(nesting_one, "See also"))
         for (i in docblock["see"]) {
@@ -652,10 +656,6 @@ function render_docblock(func_name, description, docblock, nesting) {
 
         # Add empty line to signal end of list in markdown.
         push(lines, "")
-    }
-
-    if (docblock_allows("requires") && "requires" in docblock) {
-        render_docblock_list(docblock, "requires", "Requires", nesting_one)
     }
 
 
