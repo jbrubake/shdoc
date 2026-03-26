@@ -76,6 +76,7 @@ _Output_: [examples/readme-example.md](examples/readme-example.md)<br/><br/>
 #
 # @requires foo
 # @requires bar
+# @deprecated use yell-hello instead
 #
 # @see validate()
 # @see [shdoc](https://github.com/reconquest/shdoc).
@@ -104,6 +105,10 @@ deeper-level() { echo; }
 
 # @description Back up again
 up-again() { echo; }
+
+# @description A deprecated function
+# @deprecated Because it's old
+deprecated-function() { echo; }
 ~~~
 
 </td>
@@ -128,8 +133,11 @@ The project solves lots of problems:
 * [Sub-section](#sub-section)
   * [deeper-level](#deeper-level)
 * [up-again](#up-again)
+* [deprecated-function](#deprecated-function)
 
 ## say-hello
+
+**DEPRECATED** Use yell-hello instead
 
 My super function.
 Not thread-safe.
@@ -199,6 +207,11 @@ This is nested
 
 Back up again
 
+## deprecated-function
+
+**DEPRECATED** Because it's old
+
+A deprecated function
 ~~~
 
 </td>
@@ -254,6 +267,19 @@ A multiline description of the project/section/function.
 # @description My super function.
 # Second line of my super function description.
 function super() {
+    ...
+}
+```
+
+### `@deprecated`
+
+Whether or not the function is deprecated. If it is, a short deprecation notice
+will be prepended to the description.
+
+**Example**
+```bash
+# @deprecated
+say-hello() {
     ...
 }
 ```
@@ -388,6 +414,19 @@ Can be specified multiple times to describe any number of variables.
 # @description Sets hello to the variable REPLY
 # @set REPLY string Greeting message.
 set-hello() {
+    ...
+}
+```
+
+### `@deprecated`
+
+Indicates that the function is deprecated
+
+**Example**
+
+```bash
+# @deprecated use yell-hello-world instead
+say-hello-world() {
     ...
 }
 ```
